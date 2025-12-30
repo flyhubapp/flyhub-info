@@ -401,7 +401,7 @@ Status: Received - We'll respond within 24 hours
                   <h3>Email Us</h3>
                   <p>For general inquiries and support</p>
                   <a href="mailto:support@flyhub.com" className="flyhub-contact-link">
-                    support@flyhub.com
+                    support@flyhub.info
                   </a>
                 </div>
               </div>
@@ -443,7 +443,7 @@ Status: Received - We'll respond within 24 hours
                 </div>
                 <div className="flyhub-contact-details">
                   <h3>Visit Us</h3>
-                  <p>Manikampalayam,Nammakal</p>
+                  <p>Manickampalayam, Tiruchengode, Tamil Nadu 637202</p>
                   <a 
                     href="https://www.google.com/maps/place/Flytutor+RPTO+(DGCA+Approved+Drone+Training+Academy)/@11.3264777,78.0220028,17z/data=!3m1!4b1!4m6!3m5!1s0x3babdbb297734803:0xd05a3e9e2582d7b4!8m2!3d11.3264725!4d78.0268737!16s%2Fg%2F11wqpypyws?entry=ttu&g_ep=EgoyMDI5MTIwOS4wIKXMDSoKLDEwMDc5MjA3M0gBUAM%3D" 
                     target="_blank" 

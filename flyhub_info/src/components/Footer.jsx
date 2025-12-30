@@ -1,3 +1,5 @@
+
+
 import React from 'react';
 import { FaGooglePlay, FaInstagram, FaWhatsapp, FaFacebookF, FaLinkedinIn, FaEnvelope, FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
@@ -29,15 +31,16 @@ const Footer = () => {
             </div>
           </div>
           
-          <div className="footer-section">
+          {/* Quick Links Section - Will be hidden on mobile via CSS */}
+          <div className="footer-section quick-links-section">
             <h4>Quick Links</h4>
             <ul>
               <li><Link to="/">Home</Link></li>
-               <li><Link to="/franchise">Franchise</Link></li>
+              <li><Link to="/franchise">Franchise</Link></li>
               <li><Link to="/features">Features</Link></li>
               <li><Link to="/categories">Categories</Link></li>
               <li><Link to="/about-us">About Us</Link></li>
-                <li><Link to="/contact">Contact</Link></li>
+              <li><Link to="/contact">Contact</Link></li>
             </ul>
           </div>
           
@@ -65,8 +68,9 @@ const Footer = () => {
           </div>
           
           <div className="footer-section">
-            <h4>Get Our App</h4>
-            <a href="https://play.google.com/store" target="_blank" rel="noopener noreferrer" className="google-play-link">
+            {/* Empty section for layout balance */}
+             {/* <h4>Get Our App</h4> */}
+            {/* <a href="https://play.google.com/store" target="_blank" rel="noopener noreferrer" className="google-play-link">
               <div className="google-play-badge">
                 <FaGooglePlay className="google-play-icon" />
                 <div className="google-play-text">
@@ -74,7 +78,7 @@ const Footer = () => {
                   <span className="google-play-large">Google Play</span>
                 </div>
               </div>
-            </a>
+            </a> */}
           </div>
         </div>
         

@@ -83,7 +83,7 @@
   border-left: 1px solid rgba(255, 255, 255, 0.3);
   padding-left: 12px;
 }
-
+/* 
 .ecosystem-section {
   padding: 80px 20px;
   max-width: 1200px;
@@ -140,7 +140,211 @@
 
 .ecosystem-image:hover img {
   transform: scale(1.03);
+} */
+
+.ecosystem-section {
+  padding: 70px 0;
+  background: #ffffff;
+  position: relative;
+  overflow: hidden;
 }
+
+.ecosystem-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(31, 41, 55, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 90% 80%, rgba(31, 41, 55, 0.03) 0%, transparent 50%);
+  z-index: 0;
+}
+
+.ecosystem-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.ecosystem-text {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.ecosystem-text h2 {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: #1f2937;
+  margin-bottom: 20px;
+  position: relative;
+  display: inline-block;
+}
+
+.ecosystem-text h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: #1f2937;
+  border-radius: 2px;
+}
+
+.ecosystem-text p {
+  font-size: 1.2rem;
+  color: #4b5563;
+  max-width: 700px;
+  margin: 0 auto 40px;
+  line-height: 1.7;
+}
+
+.ecosystem-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.ecosystem-list li {
+  position: relative;
+  padding: 30px 25px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(31, 41, 55, 0.08);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 2px solid #f3f4f6;
+  overflow: hidden;
+}
+
+.ecosystem-list li::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #1f2937;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 0;
+}
+
+.checkmark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: #1f2937;
+  border-radius: 50%;
+  margin-right: 15px;
+  color: white;
+  font-size: 18px;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+  transition: transform 0.5s ease;
+}
+
+.ecosystem-list strong {
+  color: #1f2937;
+  font-weight: 700;
+  font-size: 1.1rem;
+  position: relative;
+  z-index: 1;
+  transition: color 0.3s ease;
+}
+
+.ecosystem-list p {
+  color: #6b7280;
+  margin-top: 5px;
+  position: relative;
+  z-index: 1;
+  transition: color 0.3s ease;
+}
+
+/* Geometric decoration */
+.ecosystem-section::after {
+  content: '';
+  position: absolute;
+  bottom: -150px;
+  right: -150px;
+  width: 400px;
+  height: 400px;
+  background: #1f2937;
+  opacity: 0.02;
+  border-radius: 50%;
+  z-index: 0;
+}
+
+/* Dots pattern */
+.ecosystem-content::before {
+  content: '';
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 150px;
+  height: 150px;
+  background-image: radial-gradient(#1f2937 1px, transparent 1px);
+  background-size: 15px 15px;
+  opacity: 0.05;
+  z-index: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .ecosystem-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  .ecosystem-section {
+    padding: 50px 0;
+  }
+  
+  .ecosystem-text h2 {
+    font-size: 2.2rem;
+  }
+  
+  .ecosystem-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Animation for list items */
+.ecosystem-list li {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+.ecosystem-list li:nth-child(1) { animation-delay: 0.05s; }
+.ecosystem-list li:nth-child(2) { animation-delay: 0.1s; }
+.ecosystem-list li:nth-child(3) { animation-delay: 0.15s; }
+.ecosystem-list li:nth-child(4) { animation-delay: 0.2s; }
+.ecosystem-list li:nth-child(5) { animation-delay: 0.25s; }
+.ecosystem-list li:nth-child(6) { animation-delay: 0.3s; }
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+
+
+
 
 
 /* Dark Theme Section - Updated to white background */

@@ -11,7 +11,8 @@ const trainingCourses = [
     duration: '5 days', 
     students: 850, 
     rating: 4.7, 
-    image: 'https://images.unsplash.com/photo-1671043120956-f35166f77f87?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' 
+    image: 'https://images.unsplash.com/photo-1671043120956-f35166f77f87?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    url: 'https://flytutor.in/course' // Regular course
   },
   { 
     id: 2, 
@@ -19,7 +20,8 @@ const trainingCourses = [
     duration: '5 days', 
     students: 620, 
     rating: 4.8, 
-    image: 'https://images.unsplash.com/photo-1657282284426-b9a05867f49b?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' 
+    image: 'https://images.unsplash.com/photo-1657282284426-b9a05867f49b?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    url: 'https://flytutor.in/course' // Regular course
   },
   { 
     id: 3, 
@@ -27,7 +29,8 @@ const trainingCourses = [
     duration: '8 days', 
     students: 1120, 
     rating: 4.9, 
-    image: 'https://images.unsplash.com/photo-1514144385048-7d9b93766a5b?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' 
+    image: 'https://images.unsplash.com/photo-1514144385048-7d9b93766a5b?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    url: 'https://flytutor.in/course' // Regular course
   },
   { 
     id: 4, 
@@ -35,7 +38,8 @@ const trainingCourses = [
     duration: '3 days', 
     students: 450, 
     rating: 4.6, 
-    image: 'https://images.unsplash.com/photo-1660141259396-858ed837477a?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' 
+    image: 'https://images.unsplash.com/photo-1660141259396-858ed837477a?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    url: 'https://flytutor.in/course' // Regular course
   },
   { 
     id: 5, 
@@ -43,7 +47,9 @@ const trainingCourses = [
     duration: '14 days', 
     students: 780, 
     rating: 4.8, 
-    image: 'https://images.unsplash.com/photo-1721249710785-3a0cb565707b?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' 
+    image: 'https://images.unsplash.com/photo-1721249710785-3a0cb565707b?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    url: 'https://flytutor.in/certificate', // Certificate course
+    isCertificate: true
   },
   { 
     id: 6, 
@@ -51,7 +57,9 @@ const trainingCourses = [
     duration: '5 days', 
     students: 920, 
     rating: 4.7, 
-    image: 'https://plus.unsplash.com/premium_photo-1664478063149-295e8449a105?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' 
+    image: 'https://plus.unsplash.com/premium_photo-1664478063149-295e8449a105?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    url: 'https://flytutor.in/certificate', // Certificate course
+    isCertificate: true
   },
   { 
     id: 7, 
@@ -59,7 +67,9 @@ const trainingCourses = [
     duration: '5 days', 
     students: 1340, 
     rating: 4.9, 
-    image: 'https://images.unsplash.com/photo-1720071702672-d18c69cb475c?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' 
+    image: 'https://images.unsplash.com/photo-1720071702672-d18c69cb475c?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    url: 'https://flytutor.in/certificate', // Certificate course
+    isCertificate: true
   },
   { 
     id: 8, 
@@ -67,7 +77,9 @@ const trainingCourses = [
     duration: '5 days', 
     students: 1050, 
     rating: 4.8, 
-    image: 'https://images.unsplash.com/photo-1674331718483-24725d1080a8?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' 
+    image: 'https://images.unsplash.com/photo-1674331718483-24725d1080a8?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    url: 'https://flytutor.in/certificate', // Certificate course
+    isCertificate: true
   },
 ];
 
@@ -80,6 +92,14 @@ const Role = () => {
 
   const handleSellerRegister = () => {
     navigate('/register/seller');
+  };
+
+  const handleCourseClick = (course) => {
+    // Navigate to the appropriate URL based on the course
+    window.open(course.url, '_blank');
+    
+    // Optional: You can also track which course was clicked
+    console.log(`Clicked on course: ${course.title} - URL: ${course.url}`);
   };
 
   return (
@@ -147,18 +167,28 @@ const Role = () => {
       <div className="training-section">
         <div className="training-header">
           <h2>Professional Training Programs</h2>
-          <p className="section-subtitle">Master drone technology with industry-certified courses</p>
+          <p className="section-subtitle">
+            Master drone technology with industry-certified courses. 
+         
+          </p>
         </div>
         
         {/* Scrolling Courses Container */}
         <div className="courses-scroll-container">
           <div className="courses-grid">
             {trainingCourses.map((course) => (
-              <div key={course.id} className="course-card">
+              <div 
+                key={course.id} 
+                className={`course-card ${course.isCertificate ? 'certificate-course' : ''}`}
+                onClick={() => handleCourseClick(course)}
+                style={{ cursor: 'pointer' }}
+                title={`Click to ${course.isCertificate ? 'view certificate details' : 'explore course'} on Flytutor`}
+              >
                 <div 
                   className="course-image"
                   style={{ backgroundImage: `url(${course.image})` }}
                 >
+                 
                   <div className="course-info-overlay">
                     <h4>{course.title}</h4>
                     <div className="course-meta">
@@ -172,12 +202,19 @@ const Role = () => {
                         <FaStar /> {course.rating}
                       </span>
                     </div>
-                  </div>
+                    <div className="course-cta-indicator">
+                      <span>
+                        {course.isCertificate ? 'View Course →' : 'View Course →'}
+                      </span>
+                    </div>
+                  </div> 
                 </div>
               </div>
             ))}
           </div>
         </div>
+        
+       
       </div>
       
       {/* Platform Benefits */}

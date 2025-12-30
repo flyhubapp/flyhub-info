@@ -275,3 +275,24 @@
     font-size: 12px;
   }
 }
+
+/* Hide Quick Links only on small mobile screens (576px and below) */
+@media (max-width: 576px) {
+  .footer-section.quick-links-section {
+    display: none;
+  }
+  
+  .footer-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 30px;
+  }
+}
+
+/* Keep 2 columns layout for tablets (577px to 768px) */
+@media (min-width: 577px) and (max-width: 768px) {
+  .footer-content {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+}

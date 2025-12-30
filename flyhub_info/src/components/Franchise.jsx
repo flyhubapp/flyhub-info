@@ -533,7 +533,7 @@ Status: Under Review
                 <div className="form-actions">
                   <button 
                     type="submit" 
-                    className="btn btn-primary btn-lg"
+                    className="btn btn-primary btn-lg btn-submit"
                     disabled={isSubmitting}
                     aria-busy={isSubmitting}
                   >
@@ -543,16 +543,14 @@ Status: Under Review
                       </>
                     ) : (
                       <>
-                        <FaRocket /> Submit Franchise Application
+                        Submit Franchise Application
                       </>
                     )}
                   </button>
                 </div>
                 
                 <div className="form-info">
-                 
                   <p>
-                    <FaCheckCircle /> Our team will contact you within 24-48 hours
                   </p>
                 </div>
               </div>
@@ -561,236 +559,7 @@ Status: Under Review
         </div>
       </section>
 
-      {/* Add inline styles */}
-      <style jsx>{`
-        .back-button-hero {
-          background: transparent;
-          border: 2px solid rgba(255, 255, 255, 0.3);
-          color: white;
-          padding: 10px 20px;
-          border-radius: 6px;
-          cursor: pointer;
-          font-size: 16px;
-          display: flex;
-          align-items: center;
-          gap: 8px;
-          margin-bottom: 30px;
-          transition: all 0.3s ease;
-        }
-        
-        .back-button-hero:hover {
-          background: rgba(255, 255, 255, 0.1);
-          border-color: rgba(255, 255, 255, 0.5);
-        }
-        
-        .email-notice {
-          background: rgba(255, 255, 255, 0.1);
-          padding: 12px 20px;
-          border-radius: 8px;
-          margin-top: 20px;
-          display: inline-flex;
-          align-items: center;
-          gap: 10px;
-          font-size: 16px;
-          backdrop-filter: blur(10px);
-        }
-        
-        .success-container {
-          max-width: 800px;
-          margin: 0 auto;
-          background: white;
-          border-radius: 20px;
-          padding: 40px;
-          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        }
-        
-        .success-header {
-          text-align: center;
-          margin-bottom: 40px;
-        }
-        
-        .success-title {
-          margin-top: 20px;
-        }
-        
-        .success-icon {
-          font-size: 60px;
-          color: #10b981;
-          margin-bottom: 20px;
-        }
-        
-        .success-subtitle {
-          color: #6b7280;
-          font-size: 18px;
-          margin-bottom: 30px;
-        }
-        
-        .success-details {
-          background: #f9fafb;
-          border-radius: 10px;
-          padding: 25px;
-          text-align: left;
-          margin: 30px auto;
-          max-width: 600px;
-        }
-        
-        .success-details p {
-          margin: 10px 0;
-          font-size: 16px;
-        }
-        
-        .back-button {
-          background: transparent;
-          border: 2px solid #e5e7eb;
-          color: #4b5563;
-          padding: 10px 20px;
-          border-radius: 6px;
-          cursor: pointer;
-          font-size: 16px;
-          display: flex;
-          align-items: center;
-          gap: 8px;
-          transition: all 0.3s ease;
-        }
-        
-        .back-button:hover {
-          background: #f9fafb;
-          border-color: #d1d5db;
-        }
-        
-        .form-section {
-          background: white;
-          border-radius: 10px;
-          padding: 25px;
-          margin-bottom: 25px;
-          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-        }
-        
-        .form-section h3 {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          color: #374151;
-          margin-bottom: 20px;
-          font-size: 18px;
-        }
-        
-        .input-with-icon {
-          position: relative;
-        }
-        
-        .input-icon {
-          position: absolute;
-          left: 15px;
-          top: 50%;
-          transform: translateY(-50%);
-          color: #9ca3af;
-          font-size: 16px;
-        }
-        
-        input, select, textarea {
-          width: 100%;
-          padding: 12px 15px 12px 45px;
-          border: 2px solid #e5e7eb;
-          border-radius: 8px;
-          font-size: 16px;
-          transition: all 0.3s ease;
-          background: white;
-        }
-        
-        input:focus, select:focus, textarea:focus {
-          outline: none;
-          border-color: #4a6ee0;
-          box-shadow: 0 0 0 3px rgba(74, 110, 224, 0.1);
-        }
-        
-        input.error, textarea.error {
-          border-color: #ef4444;
-        }
-        
-        .error-message {
-          color: #ef4444;
-          font-size: 14px;
-          margin-top: 5px;
-          display: block;
-        }
-        
-        .char-count {
-          display: block;
-          text-align: right;
-          margin-top: 5px;
-          color: ${formData.message.length < 50 ? '#ef4444' : '#6b7280'};
-          font-size: 14px;
-        }
-        
-        .spinner {
-          animation: spin 1s linear infinite;
-          margin-right: 10px;
-        }
-        
-        @keyframes spin {
-          0% { transform: rotate(0deg); }
-          100% { transform: rotate(360deg); }
-        }
-        
-        .form-info {
-          text-align: center;
-          margin-top: 20px;
-          color: #6b7280;
-          font-size: 14px;
-          padding: 15px;
-          background: #f8fafc;
-          border-radius: 8px;
-        }
-        
-        .form-info p {
-          margin: 5px 0;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 8px;
-        }
-        
-        button:disabled {
-          opacity: 0.6;
-          cursor: not-allowed;
-        }
-        
-        .form-actions {
-          display: flex;
-          justify-content: center;
-          margin-top: 30px;
-        }
-        
-        .btn {
-          display: inline-flex;
-          align-items: center;
-          gap: 10px;
-          padding: 12px 24px;
-          border-radius: 8px;
-          font-weight: 600;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          border: none;
-          font-size: 16px;
-        }
-        
-        .btn-primary {
-          background: #4a6ee0;
-          color: white;
-        }
-        
-        .btn-primary:hover:not(:disabled) {
-          background: #3a5ed0;
-          transform: translateY(-2px);
-          box-shadow: 0 4px 12px rgba(74, 110, 224, 0.3);
-        }
-        
-        .btn-lg {
-          padding: 15px 30px;
-          font-size: 18px;
-        }
-      `}</style>
+      {/* Theme-consistent inline styles - REMOVED (now handled by Franchise.css) */}
     </div>
   );
 };

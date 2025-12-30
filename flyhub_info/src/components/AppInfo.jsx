@@ -101,21 +101,21 @@ const AppInfo = () => {
             
             {/* Download section directly below phone */}
             <div className="download-section bottom-position">
-              <h3>Download Now</h3>
-              <p>Get the Flyhub app and take your drone experience to the next level</p>
-              <a 
+              {/* <h3>Download Now</h3>
+              <p>Get the Flyhub app and take your drone experience to the next level</p> */}
+              {/* <a 
                 href="https://play.google.com/store/apps" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="download-btn"
-              >
-                <FaGooglePlay className="play-icon" />
+              > */}
+                {/* <FaGooglePlay className="play-icon" />
                 <div className="btn-text">
                   <span>Get it on</span>
                   <span className="store-name">Google Play</span>
                 </div>
                 <FaArrowRight className="btn-arrow" />
-              </a>
+              </a> */}
             </div>
           </div>
           

@@ -18,14 +18,14 @@ const About = () => {
             and enthusiasts. Buy, sell, rent, service drones, find jobs, and access professional training—all in one trusted platform.
           </p>
           <div className="playstore-hero-container">
-            <a href="https://play.google.com/store/apps" target="_blank" rel="noopener noreferrer" className="playstore-button">
+            {/* <a href="https://play.google.com/store/apps" target="_blank" rel="noopener noreferrer" className="playstore-button">
               <FaGooglePlay className="playstore-icon" />
               <div className="playstore-text">
                 <span>Get it on</span>
                 <strong>Google Play</strong>
               </div>
               <span className="playstore-download">Download Now</span>
-            </a>
+            </a> */}
           </div>
         </div>
       </header>
@@ -47,9 +47,7 @@ const About = () => {
               <li><span className="checkmark">✓</span> <strong>Community:</strong> Forums, events, and networking for 50K+ members</li>
             </ul>
           </div>
-          <div className="ecosystem-image">
-            <img src={ecosystemImage} alt="Complete Flyhub drone ecosystem" />
-          </div>
+         
         </div>
       </section>
 
@@ -112,7 +110,7 @@ const About = () => {
           <div className="industry-stats">
             <div className="stat-item">
               <div className="stat-number">Free Shipping</div>
-              <div className="stat-label">On Orders Over $500</div>
+              <div className="stat-label">On Orders Over 2000</div>
             </div>
             <div className="stat-item">
               <div className="stat-number">Easy Returns</div>

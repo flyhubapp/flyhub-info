@@ -50,7 +50,7 @@ const Navbar = () => {
           
           </div>
           
-          <a 
+          {/* <a 
             href="https://play.google.com/store/apps/details?id=com.meesho.supply" 
             target="_blank" 
             rel="noopener noreferrer"
@@ -59,7 +59,7 @@ const Navbar = () => {
           >
             <FaGooglePlay className="play-icon" />
             <span className="play-text">Get on Google Play</span>
-          </a>
+          </a> */}
         </div>
 
         {/* Overlay for mobile when menu is open */}
