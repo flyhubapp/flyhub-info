@@ -1,0 +1,433 @@
+/* styles/SellerRegister.css */
+
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', Roboto, Oxygen, Ubuntu, sans-serif;
+  line-height: 1.6;
+  color: #1a1a1a;
+  background-color: #f8fafc;
+}
+
+.seller-register-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.seller-register-container {
+  width: 100%;
+  max-width: 500px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  animation: fadeIn 0.4s ease-out;
+  border: 1px solid #f1f5f9;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Header Styles */
+.seller-register-header {
+  padding: 1.5rem 1.5rem 0;
+  background: white;
+}
+
+.back-button {
+  background: none;
+  border: none;
+  color: #64748b;
+  font-size: 0.9rem;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  cursor: pointer;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  margin-bottom: 1rem;
+}
+
+.back-button:hover {
+  background: #f8fafc;
+  color: #1f2937;
+}
+
+.seller-register-title {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.seller-register-title h1 {
+  color: #1e293b;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  letter-spacing: -0.025em;
+}
+
+.seller-register-subtitle {
+  color: #64748b;
+  font-size: 0.875rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.5;
+}
+
+.email-notice {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: #f0f9ff;
+  color: #0369a1;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  border: 1px solid #e0f2fe;
+}
+
+/* Form Styles */
+.seller-register-form {
+  padding: 0 1.5rem 1.5rem;
+}
+
+.form-section {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+  transition: border-color 0.2s ease;
+}
+
+.form-section:hover {
+  border-color: #cbd5e1;
+}
+
+.form-section h3 {
+  color: #475569;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #f1f5f9;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group:last-child {
+  margin-bottom: 0;
+}
+
+.form-group label {
+  display: block;
+  color: #475569;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.form-group label.required::after {
+  content: " *";
+  color: #dc2626;
+}
+
+.input-with-icon {
+  position: relative;
+}
+
+.input-with-icon .input-icon {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #94a3b8;
+  font-size: 0.85rem;
+  z-index: 1;
+}
+
+.input-with-icon input,
+.input-with-icon select {
+  width: 100%;
+  padding: 0.625rem 0.75rem 0.625rem 2.25rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  color: #1e293b;
+  background: white;
+  transition: all 0.2s ease;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.input-with-icon select {
+  padding-right: 2rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2394a3b8'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1rem;
+}
+
+.input-with-icon input:focus,
+.input-with-icon select:focus {
+  outline: none;
+  border-color: #1f2937;
+  box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.1);
+}
+
+.input-with-icon input.error,
+.input-with-icon select.error {
+  border-color: #dc2626;
+  background: #fef2f2;
+}
+
+.input-with-icon input.error:focus,
+.input-with-icon select.error:focus {
+  box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.1);
+}
+
+.input-with-icon input:disabled,
+.input-with-icon select:disabled {
+  background: #f8fafc;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.error-message {
+  color: #dc2626;
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+  display: block;
+  font-weight: 500;
+}
+
+.password-hint {
+  color: #64748b;
+  font-size: 0.7rem;
+  margin-top: 0.2rem;
+  display: block;
+}
+
+/* Form Footer */
+.form-footer {
+  margin-top: 1.5rem;
+}
+
+.terms-agreement {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  background: #f8fafc;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+}
+
+.terms-agreement input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+  border: 1px solid #cbd5e1;
+  cursor: pointer;
+  margin-top: 0.1rem;
+  accent-color: #1f2937;
+  flex-shrink: 0;
+}
+
+.terms-agreement input[type="checkbox"]:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.terms-agreement label {
+  color: #475569;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  flex: 1;
+}
+
+.terms-agreement a {
+  color: #1f2937;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.terms-agreement a:hover {
+  color: #1f2937;
+  text-decoration: underline;
+}
+
+.submit-button {
+  width: 100%;
+  background: #1f2937;
+  color: white;
+  border: none;
+  padding: 0.75rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  letter-spacing: 0.25px;
+}
+
+.submit-button:hover:not(:disabled) {
+  background: #1f2937;
+  transform: translateY(-1px);
+}
+
+.submit-button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.submit-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.submit-button.secondary {
+  background: #64748b;
+}
+
+.submit-button.secondary:hover:not(:disabled) {
+  background: #475569;
+}
+
+/* Spinner Animation */
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Success Page Styles */
+.success-details {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 6px;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+.success-details p {
+  color: #374151;
+  margin-bottom: 0.4rem;
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+.success-details strong {
+  color: #059669;
+  min-width: 70px;
+  display: inline-block;
+  font-weight: 600;
+}
+
+.success-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+  padding: 0 1.5rem 1.5rem;
+}
+
+.success-actions .submit-button {
+  max-width: 250px;
+  padding: 0.75rem 1.5rem;
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+  .seller-register-page {
+    padding: 0.5rem;
+  }
+  
+  .seller-register-container {
+    border-radius: 8px;
+    max-width: 100%;
+  }
+  
+  .seller-register-header {
+    padding: 1rem 1rem 0;
+  }
+  
+  .seller-register-form {
+    padding: 0 1rem 1rem;
+  }
+  
+  .seller-register-title h1 {
+    font-size: 1.25rem;
+  }
+  
+  .form-section {
+    padding: 1rem;
+  }
+  
+  .success-actions {
+    padding: 0 1rem 1rem;
+  }
+}
+
+/* Loading State */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.submit-button:disabled {
+  animation: pulse 2s infinite;
+}
+
+/* Focus Visible for Accessibility */
+:focus-visible {
+  outline: 2px solid #1f2937;
+  outline-offset: 2px;
+}
+
+/* Remove default focus styles */
+:focus:not(:focus-visible) {
+  outline: none;
+}
