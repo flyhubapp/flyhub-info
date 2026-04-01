@@ -145,7 +145,7 @@ const Footer = () => {
                 <ul>
                   <li className="contact-item">
                     <FaEnvelope className="contact-icon" />
-                    <span>info@flyhub.com</span>
+                    <span>support@flyhub.info</span>
                   </li>
                   <li className="contact-item">
                     <FaPhone className="contact-icon" />

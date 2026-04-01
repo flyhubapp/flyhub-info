@@ -1,5 +1,15 @@
 {
   "projects": {
     "default": "mythic-inn-475111-s0"
-  }
+  },
+  "targets": {
+    "mythic-inn-475111-s0": {
+      "hosting": {
+        "flyhub-info": [
+          "flyhub-info"
+        ]
+      }
+    }
+  },
+  "etags": {}
 }
