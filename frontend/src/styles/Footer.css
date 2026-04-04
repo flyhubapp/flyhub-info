@@ -1,0 +1,424 @@
+/* Footer.css - Light Theme */
+.footer {
+  background: #ffffff;
+  color: #111827;
+  padding: 40px 0 20px;
+  font-size: 14px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.footer-section h4 {
+  font-size: 16px;
+  margin-bottom: 15px;
+  color: #111827;
+  font-weight: 700;
+}
+
+.footer-description {
+  color: #101824;
+  line-height: 1.6;
+  margin: 10px 0 15px;
+  font-size: 13px;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 10px;
+  color: #475569;
+  font-size: 13px;
+}
+
+.footer-section ul li a {
+  color: #475569;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-size: 13px;
+}
+
+.footer-section ul li a:hover {
+  color: #60a5fa;
+}
+
+/* Social Icons */
+.social-icons {
+  display: flex;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: #f1f5f9;
+  border-radius: 50%;
+  color: #1e293b;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-size: 14px;
+}
+
+.social-icon:hover {
+  background: #60a5fa;
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* Contact Items with Icons */
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.contact-icon {
+  color: #60a5fa;
+  font-size: 12px;
+  min-width: 14px;
+}
+
+/* Legal Links */
+.legal-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #e2e8f0;
+  font-size: 12px;
+}
+
+.legal-links a {
+  color: #64748b;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.legal-links a:hover {
+  color: #60a5fa;
+}
+
+.legal-links .separator {
+  color: #cbd5e1;
+  font-weight: 300;
+}
+
+.footer-logo {
+  max-width: 140px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+/* Google Play Badge Styles */
+.google-play-link {
+  display: inline-block;
+  text-decoration: none;
+}
+
+.google-play-badge {
+  display: flex;
+  align-items: center;
+  background: #f8fafc;
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  transition: all 0.3s ease;
+  max-width: 180px;
+}
+
+.google-play-badge:hover {
+  background: #f1f5f9;
+  border-color: #09255f;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(37, 99, 235, 0.1);
+}
+
+.google-play-icon {
+  font-size: 24px;
+  color: #143053;
+  margin-right: 10px;
+}
+
+.google-play-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.google-play-small {
+  font-size: 9px;
+  color: #64748b;
+  line-height: 1;
+}
+
+.google-play-large {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+  line-height: 1.2;
+}
+
+/* Footer Bottom */
+.footer-bottom {
+  border-top: 1px solid #e2e8f0;
+  padding-top: 20px;
+  text-align: center;
+  color: #64748b;
+  font-size: 12px;
+}
+
+.footer-bottom p {
+  margin: 8px 0;
+}
+
+.design-credit {
+  font-size: 11px;
+  color: #94a3b8;
+  font-style: italic;
+}
+
+/* Powered by Aviatricks Section */
+.powered-by-container {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.powered-by {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.powered-by-text {
+  font-size: 13px;
+  color: #475569;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.aviatricks-logo {
+  height: 35px;
+  width: auto;
+  opacity: 0.9;
+  transition: all 0.3s ease;
+  /* Removed filter property to keep original colors */
+}
+
+.aviatricks-logo:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+/* Responsive Design for Powered By Section */
+
+/* Tablet screens (768px and below) */
+@media (max-width: 768px) {
+  .footer {
+    padding: 30px 0 15px;
+  }
+  
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  
+  .footer-section {
+    text-align: center;
+  }
+  
+  .social-icons {
+    justify-content: center;
+  }
+  
+  .legal-links {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .contact-item {
+    justify-content: center;
+  }
+  
+  .google-play-badge {
+    margin: 0 auto;
+  }
+  
+  /* Powered by responsive */
+  .powered-by-container {
+    margin-top: 15px;
+    padding-top: 15px;
+  }
+  
+  .powered-by {
+    justify-content: center;
+    flex-direction: row;
+  }
+  
+  .aviatricks-logo {
+    height: 30px;
+  }
+  
+  .powered-by-text {
+    font-size: 12px;
+  }
+}
+
+/* Mobile screens (480px and below) */
+@media (max-width: 480px) {
+  .footer-section h4 {
+    font-size: 15px;
+  }
+  
+  .legal-links {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .legal-links .separator {
+    display: none;
+  }
+  
+  .google-play-badge {
+    padding: 8px 14px;
+    max-width: 160px;
+  }
+  
+  .google-play-icon {
+    font-size: 20px;
+  }
+  
+  .google-play-large {
+    font-size: 13px;
+  }
+  
+  .social-icon {
+    width: 28px;
+    height: 28px;
+    font-size: 12px;
+  }
+  
+  /* Powered by responsive */
+  .powered-by {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+  
+  .aviatricks-logo {
+    height: 100px;
+  }
+  
+  .powered-by-text {
+    font-size: 11px;
+    white-space: normal;
+  }
+  
+  .powered-by-container {
+    margin-top: 20px;
+    padding-top: 12px;
+  }
+}
+
+/* Small mobile screens (360px and below) */
+@media (max-width: 360px) {
+  .powered-by {
+    gap: 6px;
+  }
+  
+  .aviatricks-logo {
+    height: 30px;
+  }
+  
+  .powered-by-text {
+    font-size: 10px;
+  }
+}
+
+/* For larger screens (1024px and above) */
+@media (min-width: 1024px) {
+  .footer-content {
+    gap: 40px;
+  }
+  
+  .footer-section h4 {
+    font-size: 15px;
+  }
+  
+  .footer-description {
+    font-size: 12px;
+  }
+  
+  /* Powered by for larger screens */
+  .powered-by-container {
+    margin-top: 25px;
+    padding-top: 25px;
+  }
+  
+  .aviatricks-logo {
+    height: 40px;
+  }
+  
+  .powered-by-text {
+    font-size: 14px;
+  }
+}
+
+/* Extra large screens (1200px and above) */
+@media (min-width: 1200px) {
+  .powered-by-container {
+    margin-top: 30px;
+    padding-top: 30px;
+  }
+  
+  .aviatricks-logo {
+    height: 60px;
+  }
+}
+
+/* Hover effects for powered by section */
+.powered-by:hover .powered-by-text {
+  color: #60a5fa;
+}
+
+/* Animation for links */
+.footer-section ul li a,
+.legal-links a {
+  position: relative;
+}
+
+.footer-section ul li a::after,
+.legal-links a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 1px;
+  bottom: -2px;
+  left: 0;
+  background-color: #60a5fa;
+  transition: width 0.3s ease;
+}
+
+.footer-section ul li a:hover::after,
+.legal-links a:hover::after {
+  width: 100%;
+}

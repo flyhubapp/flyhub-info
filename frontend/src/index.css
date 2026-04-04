@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --primary-color: #4285f4;
+  --text-dark: #1a1a1a;
+  --text-light: #666666;
+  --bg-white: #ffffff;
+  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  --navbar-height: 80px;
+  --navbar-height-scrolled: 65px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--text-dark);
+  background-color: var(--bg-white);
+  line-height: 1.5;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* --- Global Scroll Reveal Utilities --- */
+.reveal-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-fade {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+.reveal-fade.visible {
+  opacity: 1;
+}
+
+.reveal-stagger-parent .reveal-child {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal-stagger-parent.visible .reveal-child {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered delays for child items */
+.reveal-stagger-parent.visible .reveal-child:nth-child(1) { transition-delay: 0.1s; }
+.reveal-stagger-parent.visible .reveal-child:nth-child(2) { transition-delay: 0.2s; }
+.reveal-stagger-parent.visible .reveal-child:nth-child(3) { transition-delay: 0.3s; }
+.reveal-stagger-parent.visible .reveal-child:nth-child(4) { transition-delay: 0.4s; }
+.reveal-stagger-parent.visible .reveal-child:nth-child(5) { transition-delay: 0.5s; }
+.reveal-stagger-parent.visible .reveal-child:nth-child(6) { transition-delay: 0.6s; }
+.reveal-stagger-parent.visible .reveal-child:nth-child(7) { transition-delay: 0.7s; }
+.reveal-stagger-parent.visible .reveal-child:nth-child(8) { transition-delay: 0.8s; }
+
