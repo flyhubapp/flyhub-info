@@ -9,6 +9,8 @@ const fs = require('fs');
 require('dotenv').config({ override: true });
 
 // Ensure uploads directory exists
+// NOTE: Cloud Run filesystems are ephemeral. Static files in 'uploads' will be lost on restart.
+// For persistent storage, consider Google Cloud Storage.
 const uploadDir = path.join(__dirname, 'uploads');
 if (!fs.existsSync(uploadDir)){
     fs.mkdirSync(uploadDir);
@@ -44,7 +46,14 @@ const Media = require('./models/Media');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(cors());
+app.set('trust proxy', true);
+
+app.use(cors({
+  origin: process.env.ALLOWED_ORIGINS ? process.env.ALLOWED_ORIGINS.split(',') : '*',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  credentials: true
+}));
+
 app.use(express.json());
 app.use('/uploads', express.static('uploads'));
 
@@ -77,7 +86,7 @@ const sendSubmissionAlert = async (type, details) => {
           ${Object.entries(details).map(([k, v]) => `<li><strong>${k}:</strong> ${v}</li>`).join('')}
         </ul>
         <hr/>
-        <p style="font-size: 11px; color: #777;">View full details in the <a href="http://localhost:5173">Flyhub Admin Panel</a>.</p>
+        <p style="font-size: 11px; color: #777;">View full details in the <a href="${process.env.ADMIN_PANEL_URL || 'http://localhost:5173'}">Flyhub Admin Panel</a>.</p>
       </div>
     `
   };
