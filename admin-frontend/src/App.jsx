@@ -35,7 +35,9 @@ import Franchise from './pages/Franchise.jsx';
 import RequestAppAccess from './pages/RequestAppAccess.jsx';
 import Registrations from './pages/Registrations.jsx';
 import MediaManager from './pages/MediaManager.jsx';
+import LegalPages from './pages/LegalPages.jsx';
 import Sidebar from './pages/sidebar.jsx';
+
 import NotificationDropdown from './pages/NotificationDropdown.jsx';
 import './admin.css';
 
@@ -150,7 +152,9 @@ function App() {
               <Route path="/registrations" element={<Registrations globalSearch={globalSearch} />} />
               <Route path="/request-access" element={<RequestAppAccess globalSearch={globalSearch} />} />
               <Route path="/media" element={<MediaManager />} />
+              <Route path="/legal" element={<LegalPages />} />
               <Route path="*" element={<Dashboard globalSearch={globalSearch} />} />
+
             </Routes>
           </main>
         </div>

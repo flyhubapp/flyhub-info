@@ -246,3 +246,46 @@
     border-left: 3px solid #3498db;
   }
 }
+
+/* Loading and Empty States */
+.loading-container, .empty-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  text-align: center;
+  background: #f9f9f9;
+  border-radius: 12px;
+  border: 1px dashed #ddd;
+  margin: 2rem 0;
+}
+
+.loading-container p, .empty-content p {
+  margin-top: 1rem;
+  color: #666;
+  font-weight: 500;
+}
+
+.loader {
+  width: 48px;
+  height: 48px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.dynamic-content {
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

@@ -7,8 +7,10 @@ import {
     Smartphone,
     ChevronRight,
     Zap,
-    Image as ImageIcon
+    Image as ImageIcon,
+    FileText
 } from 'lucide-react';
+
 
 /* ── Nav Item ── */
 const NavItem = ({ icon: Icon, label, path, active, badge }) => {
@@ -34,7 +36,9 @@ const Sidebar = ({ isOpen, onClose }) => {
         { label: 'Contact', icon: Mail, path: '/contact' },
         { label: 'App Access', icon: Smartphone, path: '/request-access' },
         { label: 'Media Archive', icon: ImageIcon, path: '/media' },
+        { label: 'Legal Pages', icon: FileText, path: '/legal' },
     ];
+
 
     return (
         <>

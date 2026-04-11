@@ -42,14 +42,21 @@ const AppAccess = require('./models/AppAccess');
 const Registration = require('./models/Registration');
 const Notification = require('./models/Notification');
 const Media = require('./models/Media');
+const LegalContent = require('./models/LegalContent');
+
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.set('trust proxy', true);
 
+const allowedOrigins = process.env.ALLOWED_ORIGINS 
+  ? process.env.ALLOWED_ORIGINS.split(',').map(o => o.trim()).filter(o => o !== '')
+  : '*';
+console.log('📡 CORS Configured for:', allowedOrigins);
+
 app.use(cors({
-  origin: process.env.ALLOWED_ORIGINS ? process.env.ALLOWED_ORIGINS.split(',').map(o => o.trim()) : '*',
+  origin: allowedOrigins,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   credentials: true
 }));
@@ -123,8 +130,10 @@ const memoryStore = {
   franchise: [],
   appAccess: [],
   registration: [],
-  media: []
+  media: [],
+  legal: []
 };
+
 
 // ── HEALTH MONITOR ──
 app.get('/api/health', (req, res) => {
@@ -350,6 +359,53 @@ app.put('/api/notifications/:id/read', async (req, res) => {
     res.json({ success: true });
   } catch (err) { res.status(500).json({ error: err.message }); }
 });
+
+// ── LEGAL CONTENT MANAGEMENT ──
+
+app.get('/api/legal/:type', async (req, res) => {
+  const { type } = req.params;
+  try {
+    if (isDbConnected) {
+      let content = await LegalContent.findOne({ type });
+      if (!content) {
+        // Return blank if not found instead of error to allow first-time setup
+        return res.json({ type, content: '' });
+      }
+      return res.json(content);
+    }
+    const memoryItem = memoryStore.legal.find(l => l.type === type);
+    res.json(memoryItem || { type, content: '' });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+app.put('/api/legal/:type', async (req, res) => {
+  const { type } = req.params;
+  const { content } = req.body;
+  try {
+    if (isDbConnected) {
+      const updated = await LegalContent.findOneAndUpdate(
+        { type },
+        { content, lastUpdated: Date.now() },
+        { upsert: true, new: true }
+      );
+      return res.json({ success: true, data: updated });
+    }
+    
+    let idx = memoryStore.legal.findIndex(l => l.type === type);
+    const item = { type, content, lastUpdated: new Date() };
+    if (idx !== -1) {
+      memoryStore.legal[idx] = item;
+    } else {
+      memoryStore.legal.push(item);
+    }
+    res.json({ success: true, data: item });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 
 // ── RETRIEVAL HANDLERS ──
 
