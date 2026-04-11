@@ -41,6 +41,8 @@
 .logo-image {
   height: 48px;
   width: auto;
+  max-width: 100%;
+  object-fit: contain;
   transition: transform var(--transition-fast), opacity var(--transition-fast), height var(--transition-fast);
 }
 
@@ -147,34 +149,44 @@
   background: transparent;
   border: none;
   cursor: pointer;
-  padding: 12px;
-  margin: 0;
+  padding: 0;
+  width: 48px;
+  height: 48px;
+  margin: 0 -8px 0 0;
   z-index: 1007;
   color: var(--text-dark, #333);
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  transition: opacity var(--transition-fast);
+}
+
+.menu-toggle:active {
+  opacity: 0.7;
 }
 
 .hamburger-box {
-  width: 24px;
+  width: 28px;
   height: 20px;
-  display: inline-block;
+  display: block;
   position: relative;
 }
 
 .hamburger-inner {
   display: block;
   top: 50%;
-  margin-top: -1px;
+  transform: translateY(-50%);
 }
 
 .hamburger-inner,
 .hamburger-inner::before,
 .hamburger-inner::after {
-  width: 24px;
-  height: 2px;
+  width: 28px;
+  height: 2.5px;
   background-color: currentColor;
-  border-radius: 2px;
+  border-radius: 4px;
   position: absolute;
-  transition: transform 0.2s ease, opacity 0.2s ease, top 0.2s ease;
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease;
 }
 
 .hamburger-inner::before,
@@ -188,7 +200,7 @@
 }
 
 .hamburger-inner::after {
-  bottom: -8px;
+  top: 8px;
 }
 
 /* Hamburger Active State */
@@ -202,7 +214,7 @@
 }
 
 .menu-toggle.active .hamburger-inner::after {
-  bottom: 0;
+  top: 0;
   transform: rotate(-90deg);
 }
 
@@ -215,7 +227,12 @@
 
 @media screen and (max-width: 1024px) {
   .nav-container {
-    padding: 0 20px;
+    padding: 0 16px;
+  }
+
+  .logo {
+    max-width: 200px;
+    flex-shrink: 0;
   }
 
   .nav-content {
@@ -242,8 +259,28 @@
 
   .menu-toggle {
     display: flex;
-    align-items: center;
     justify-content: center;
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0;
+  }
+
+  .menu-toggle.active {
+    position: fixed;
+    top: 11px;
+    right: 12px;
+    transform: none;
+  }
+
+  .logo {
+    max-width: 180px;
+    flex-shrink: 0;
+  }
+
+  .logo-image {
+    height: 40px;
   }
 
   /* Modern Mobile Menu Sidebar */
@@ -330,7 +367,11 @@
 
 @media screen and (max-width: 480px) {
   .logo-image {
-    height: 38px;
+    height: 32px;
+  }
+
+  .logo {
+    max-width: 140px;
   }
 
   .navbar.scrolled .logo-image {
