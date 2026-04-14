@@ -53,13 +53,29 @@ app.set('trust proxy', true);
 
 const allowedOrigins = process.env.ALLOWED_ORIGINS 
   ? process.env.ALLOWED_ORIGINS.split(',').map(o => o.trim()).filter(o => o !== '')
-  : '*';
+  : ['https://flyhub.info', 'https://flyhub-info.vercel.app'];
+
 console.log('📡 CORS Configured for:', allowedOrigins);
 
 app.use(cors({
-  origin: allowedOrigins,
+  origin: function (origin, callback) {
+    // allow requests with no origin (like mobile apps or curl requests)
+    if (!origin) return callback(null, true);
+    
+    const isAllowed = allowedOrigins.indexOf(origin) !== -1 || 
+                     origin.endsWith('.vercel.app') || 
+                     origin.includes('localhost');
+                     
+    if (isAllowed) {
+      callback(null, true);
+    } else {
+      console.warn(`🛑 CORS Blocked Origin: ${origin}`);
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  credentials: true
+  credentials: true,
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept']
 }));
 
 app.use(express.json());

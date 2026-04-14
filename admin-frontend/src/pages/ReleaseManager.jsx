@@ -30,7 +30,9 @@ const ReleaseManager = () => {
 
     const fetchReleases = async () => {
         try {
-            const res = await fetch(`${apiUrl}/app-version`);
+            const res = await fetch(`${apiUrl}/app-version`, {
+                credentials: 'include'
+            });
             const data = await res.json();
             setReleases(data);
             setLoading(false);
@@ -62,7 +64,8 @@ const ReleaseManager = () => {
         try {
             const res = await fetch(`${apiUrl}/app-version/upload`, {
                 method: 'POST',
-                body: data
+                body: data,
+                credentials: 'include'
             });
 
             if (res.ok) {
@@ -86,7 +89,8 @@ const ReleaseManager = () => {
 
         try {
             const res = await fetch(`${apiUrl}/app-version/${id}`, {
-                method: 'DELETE'
+                method: 'DELETE',
+                credentials: 'include'
             });
             if (res.ok) {
                 fetchReleases();

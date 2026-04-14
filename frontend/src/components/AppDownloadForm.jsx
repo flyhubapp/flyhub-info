@@ -20,7 +20,9 @@ const AppDownloadForm = ({ isOpen, onClose }) => {
     useEffect(() => {
         const fetchLatest = async () => {
             try {
-                const res = await fetch(`${process.env.REACT_APP_API_URL}/app-version/latest`);
+                const res = await fetch(`${process.env.REACT_APP_API_URL}/app-version/latest`, {
+                    credentials: 'include'
+                });
                 const data = await res.json();
                 if (data && !data.error) {
                     setLatestVersion(data);
@@ -60,7 +62,8 @@ const AppDownloadForm = ({ isOpen, onClose }) => {
             await fetch(`${process.env.REACT_APP_API_URL}/app-access`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
+                body: JSON.stringify(payload),
+                credentials: 'include'
             });
 
             console.log('Form Submitted to Backend:', payload);
