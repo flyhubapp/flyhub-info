@@ -36,6 +36,7 @@ import RequestAppAccess from './pages/RequestAppAccess.jsx';
 import Registrations from './pages/Registrations.jsx';
 import MediaManager from './pages/MediaManager.jsx';
 import LegalPages from './pages/LegalPages.jsx';
+import ReleaseManager from './pages/ReleaseManager.jsx';
 import Sidebar from './pages/sidebar.jsx';
 
 import NotificationDropdown from './pages/NotificationDropdown.jsx';
@@ -153,6 +154,7 @@ function App() {
               <Route path="/request-access" element={<RequestAppAccess globalSearch={globalSearch} />} />
               <Route path="/media" element={<MediaManager />} />
               <Route path="/legal" element={<LegalPages />} />
+              <Route path="/app-releases" element={<ReleaseManager />} />
               <Route path="*" element={<Dashboard globalSearch={globalSearch} />} />
 
             </Routes>

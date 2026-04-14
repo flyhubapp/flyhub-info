@@ -37,6 +37,7 @@ const Sidebar = ({ isOpen, onClose }) => {
         { label: 'App Access', icon: Smartphone, path: '/request-access' },
         { label: 'Media Archive', icon: ImageIcon, path: '/media' },
         { label: 'Legal Pages', icon: FileText, path: '/legal' },
+        { label: 'App Releases', icon: Smartphone, path: '/app-releases' },
     ];
 
 

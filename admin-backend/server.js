@@ -43,6 +43,7 @@ const Registration = require('./models/Registration');
 const Notification = require('./models/Notification');
 const Media = require('./models/Media');
 const LegalContent = require('./models/LegalContent');
+const AppVersion = require('./models/AppVersion');
 
 
 const app = express();
@@ -131,7 +132,8 @@ const memoryStore = {
   appAccess: [],
   registration: [],
   media: [],
-  legal: []
+  legal: [],
+  appVersion: []
 };
 
 
@@ -401,6 +403,105 @@ app.put('/api/legal/:type', async (req, res) => {
       memoryStore.legal.push(item);
     }
     res.json({ success: true, data: item });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// ── APP RELEASE MANAGEMENT (APK) ──
+
+// Upload APK
+app.post('/api/app-version/upload', upload.single('apk'), async (req, res) => {
+  if (!req.file) return res.status(400).json({ error: 'No APK provided' });
+  
+  const { version, releaseNotes } = req.body;
+  if (!version) return res.status(400).json({ error: 'Version is required' });
+
+  const host = req.get('host');
+  const protocol = req.protocol;
+  const fileUrl = `${protocol}://${host}/uploads/${req.file.filename}`;
+
+  const appData = {
+    version,
+    releaseNotes,
+    apkFilename: req.file.filename,
+    apkUrl: fileUrl,
+    isActive: true
+  };
+
+  try {
+    if (isDbConnected) {
+      // Deactivate previous versions
+      await AppVersion.updateMany({}, { isActive: false });
+      
+      const entry = new AppVersion(appData);
+      await entry.save();
+      return res.status(201).json({ success: true, data: entry });
+    }
+    
+    // Memory Path
+    memoryStore.appVersion.forEach(a => a.isActive = false);
+    const fakeEntry = { ...appData, _id: Date.now().toString(), createdAt: new Date() };
+    memoryStore.appVersion.push(fakeEntry);
+    res.status(201).json({ success: true, data: fakeEntry });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// Get latest APK
+app.get('/api/app-version/latest', async (req, res) => {
+  try {
+    if (isDbConnected) {
+      const latest = await AppVersion.findOne({ isActive: true }).sort({ createdAt: -1 });
+      if (!latest) {
+        // Fallback to any version if none active
+        const any = await AppVersion.findOne().sort({ createdAt: -1 });
+        return res.json(any || { error: 'No APK available' });
+      }
+      return res.json(latest);
+    }
+    
+    const active = memoryStore.appVersion.find(a => a.isActive) || memoryStore.appVersion[memoryStore.appVersion.length - 1];
+    res.json(active || { error: 'No APK available' });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// Get all APK versions
+app.get('/api/app-version', async (req, res) => {
+  try {
+    if (isDbConnected) {
+      const list = await AppVersion.find().sort({ createdAt: -1 });
+      return res.json(list);
+    }
+    res.json([...memoryStore.appVersion].reverse());
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// Delete APK version
+app.delete('/api/app-version/:id', async (req, res) => {
+  try {
+    let item;
+    if (isDbConnected) {
+      item = await AppVersion.findByIdAndDelete(req.params.id);
+    } else {
+      const idx = memoryStore.appVersion.findIndex(x => x._id === req.params.id);
+      if (idx !== -1) {
+        item = memoryStore.appVersion[idx];
+        memoryStore.appVersion.splice(idx, 1);
+      }
+    }
+    
+    if (item && item.apkFilename) {
+      const fullPath = path.join(__dirname, 'uploads', item.apkFilename);
+      if (fs.existsSync(fullPath)) fs.unlinkSync(fullPath);
+    }
+    
+    res.json({ success: true });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
