@@ -52,6 +52,9 @@ const AppVersion = require('./models/AppVersion');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+// Trust Cloud Run / load-balancer proxy so req.protocol returns 'https' correctly
+app.set('trust proxy', 1);
+
 // Bulletproof CORS: Manually set headers to ensure they are present even during rejection
 app.use((req, res, next) => {
   // We explicitly allow the Vercel origin and localhost
@@ -420,38 +423,35 @@ app.put('/api/legal/:type', async (req, res) => {
   }
 });
 
-// ── APP RELEASE MANAGEMENT (APK) ──
+// ── APP RELEASE MANAGEMENT ──
 
-// Upload APK
-app.post('/api/app-version/upload', upload.single('apk'), async (req, res) => {
-  if (!req.file) return res.status(400).json({ error: 'No APK provided' });
-  
-  const { version, releaseNotes } = req.body;
-  if (!version) return res.status(400).json({ error: 'Version is required' });
+// Publish new APK release (URL-based — no file upload)
+app.post('/api/app-version/publish', async (req, res) => {
+  const { version, releaseNotes, apkUrl, apkFilename } = req.body;
 
-  const host = req.get('host');
-  const protocol = req.protocol;
-  const fileUrl = `${protocol}://${host}/uploads/${req.file.filename}`;
+  if (!version || !version.trim()) {
+    return res.status(400).json({ error: 'Version is required' });
+  }
+  if (!apkUrl || !apkUrl.trim()) {
+    return res.status(400).json({ error: 'APK download URL is required' });
+  }
 
   const appData = {
-    version,
-    releaseNotes,
-    apkFilename: req.file.filename,
-    apkUrl: fileUrl,
+    version: version.trim(),
+    releaseNotes: (releaseNotes || '').trim(),
+    apkFilename: (apkFilename || `FlyHub-v${version.trim()}.apk`).trim(),
+    apkUrl: apkUrl.trim(),
     isActive: true
   };
 
   try {
     if (isDbConnected) {
-      // Deactivate previous versions
       await AppVersion.updateMany({}, { isActive: false });
-      
       const entry = new AppVersion(appData);
       await entry.save();
       return res.status(201).json({ success: true, data: entry });
     }
     
-    // Memory Path
     memoryStore.appVersion.forEach(a => a.isActive = false);
     const fakeEntry = { ...appData, _id: Date.now().toString(), createdAt: new Date() };
     memoryStore.appVersion.push(fakeEntry);
@@ -459,6 +459,13 @@ app.post('/api/app-version/upload', upload.single('apk'), async (req, res) => {
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
+});
+
+// Keep legacy upload route but return a helpful error
+app.post('/api/app-version/upload', (req, res) => {
+  res.status(410).json({
+    error: 'File upload is no longer supported. Use POST /api/app-version/publish with a download URL instead.'
+  });
 });
 
 // Get latest APK
