@@ -425,9 +425,9 @@ app.put('/api/legal/:type', async (req, res) => {
 
 // ── APP RELEASE MANAGEMENT ──
 
-// Publish new APK release (URL-based — no file upload)
+// Publish new APK release (Firebase Storage URL)
 app.post('/api/app-version/publish', async (req, res) => {
-  const { version, releaseNotes, apkUrl, apkFilename } = req.body;
+  const { version, releaseNotes, apkUrl, apkFilename, storagePath } = req.body;
 
   if (!version || !version.trim()) {
     return res.status(400).json({ error: 'Version is required' });
@@ -441,6 +441,7 @@ app.post('/api/app-version/publish', async (req, res) => {
     releaseNotes: (releaseNotes || '').trim(),
     apkFilename: (apkFilename || `FlyHub-v${version.trim()}.apk`).trim(),
     apkUrl: apkUrl.trim(),
+    storagePath: (storagePath || '').trim(),
     isActive: true
   };
 
