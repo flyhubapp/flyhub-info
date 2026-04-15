@@ -26,7 +26,10 @@ const storage = multer.diskStorage({
   }
 })
 
-const upload = multer({ storage: storage });
+const upload = multer({ 
+  storage: storage,
+  limits: { fileSize: 100 * 1024 * 1024 } // 100MB limit
+});
 
 // Attempt to bypass local DNS filters that block SRV queries
 try {
@@ -49,36 +52,29 @@ const AppVersion = require('./models/AppVersion');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.set('trust proxy', true);
+// Bulletproof CORS: Manually set headers to ensure they are present even during rejection
+app.use((req, res, next) => {
+  // We explicitly allow the Vercel origin and localhost
+  const origin = req.headers.origin;
+  if (origin && (origin.includes('vercel.app') || origin.includes('localhost') || origin.includes('flyhub.info'))) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+  } else {
+    res.setHeader('Access-Control-Allow-Origin', 'https://flyhub-info.vercel.app');
+  }
+  
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With, Accept, Origin');
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
 
-const allowedOrigins = process.env.ALLOWED_ORIGINS 
-  ? process.env.ALLOWED_ORIGINS.split(',').map(o => o.trim()).filter(o => o !== '')
-  : ['https://flyhub.info', 'https://flyhub-info.vercel.app'];
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end();
+  }
+  next();
+});
 
-console.log('📡 CORS Configured for:', allowedOrigins);
 
-app.use(cors({
-  origin: function (origin, callback) {
-    // allow requests with no origin (like mobile apps or curl requests)
-    if (!origin) return callback(null, true);
-    
-    const isAllowed = allowedOrigins.indexOf(origin) !== -1 || 
-                     origin.endsWith('.vercel.app') || 
-                     origin.includes('localhost');
-                     
-    if (isAllowed) {
-      callback(null, true);
-    } else {
-      console.warn(`🛑 CORS Blocked Origin: ${origin}`);
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  credentials: true,
-  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept']
-}));
-
-app.use(express.json());
+app.use(express.json({ limit: '100mb' }));
+app.use(express.urlencoded({ limit: '100mb', extended: true }));
 app.use('/uploads', express.static('uploads'));
 
 // ── MAIL CONFIGURATION ──
