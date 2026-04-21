@@ -189,17 +189,18 @@ const LegalPages = () => {
                     </div>
 
                     {/* Right Side: Preview */}
-                    <div className="preview-side" style={{ flex: 1, background: '#fdfdfd', display: 'flex', flexDirection: 'column' }}>
+                    <div className="preview-side" style={{ flex: 1, background: '#fff', display: 'flex', flexDirection: 'column' }}>
                         <div className="side-label" style={{ padding: '10px 20px', background: '#f8f9fa', borderBottom: '1px solid var(--border-light)', display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px', fontWeight: 700, color: 'var(--pink)' }}>
-                            <Eye size={14} /> LIVE PREVIEW
+                            <Eye size={14} /> LIVE PREVIEW (MATCHES FRONTEND)
                         </div>
                         <div className="preview-content" style={{ 
                             flex: 1, 
-                            padding: '30px', 
+                            padding: '2rem', 
                             overflowY: 'auto',
-                            lineHeight: '1.8',
-                            color: '#444',
-                            fontSize: '15px'
+                            fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
+                            lineHeight: '1.6',
+                            color: '#333',
+                            background: '#fff'
                         }}>
                             {loading ? (
                                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100%', color: 'var(--text-muted)' }}>
@@ -207,7 +208,11 @@ const LegalPages = () => {
                                     <p style={{ marginTop: '10px', fontSize: '13px' }}>Syncing preview...</p>
                                 </div>
                             ) : content ? (
-                                <div dangerouslySetInnerHTML={{ __html: content }} className="legal-html-preview" />
+                                <div 
+                                    dangerouslySetInnerHTML={{ __html: content }} 
+                                    className="legal-html-preview" 
+                                    style={{ lineHeight: '1.8', color: '#444' }}
+                                />
                             ) : (
                                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100%', color: 'var(--text-muted)', textAlign: 'center' }}>
                                     <AlertCircle size={40} style={{ opacity: 0.2, marginBottom: '10px' }} />
@@ -228,12 +233,114 @@ const LegalPages = () => {
                 .stat-card-pink:active { transform: translateY(0); }
                 .stat-card-pink:disabled { opacity: 0.7; cursor: not-allowed; }
 
-                /* Live Preview Styling to match Frontend */
-                .legal-html-preview h1, .legal-html-preview h2, .legal-html-preview h3 { color: #2c3e50; margin: 1.5rem 0 1rem 0; }
-                .legal-html-preview p { margin-bottom: 1rem; }
-                .legal-html-preview ul, .legal-html-preview ol { padding-left: 20px; margin-bottom: 1rem; }
-                .legal-html-preview li { margin-bottom: 0.5rem; }
-                .legal-html-preview strong { color: #333; font-weight: 700; }
+                /* Live Preview Styling to EXACTLY match Frontend */
+                .legal-html-preview {
+                    font-size: 1rem;
+                    white-space: pre-wrap; /* Preserve line breaks from editor */
+                    word-wrap: break-word;
+                }
+                .legal-html-preview h1, .legal-html-preview h2, .legal-html-preview h3 { 
+                    color: #2c3e50; 
+                    margin: 1.5rem 0 1rem 0; 
+                    font-weight: 700;
+                    line-height: 1.2;
+                }
+                .legal-html-preview h1 { font-size: 2.5rem; text-align: center; margin-bottom: 2rem; }
+                .legal-html-preview h2 { font-size: 1.8rem; }
+                .legal-html-preview h3 { font-size: 1.5rem; }
+                
+                .legal-html-preview p { 
+                    margin-bottom: 1rem; 
+                    text-align: justify;
+                }
+                
+                .legal-html-preview ul, .legal-html-preview ol { 
+                    padding-left: 1.5rem; 
+                    margin: 1rem 0; 
+                }
+                
+                .legal-html-preview li { 
+                    margin-bottom: 0.5rem; 
+                    line-height: 1.6;
+                }
+                
+                .legal-html-preview strong { 
+                    color: #333; 
+                    font-weight: 700; 
+                }
+
+                /* Custom Frontend Classes Support */
+                .legal-html-preview .section-title {
+                    text-align: center;
+                    font-size: 1.5rem;
+                    font-weight: 600;
+                    color: #2c3e50;
+                    margin: 3rem 0 1.5rem;
+                    padding-bottom: 0.5rem;
+                    border-bottom: 2px solid #eaeaea;
+                    text-transform: uppercase;
+                    letter-spacing: 0.5px;
+                }
+
+                .legal-html-preview .terms-section, 
+                .legal-html-preview .policy-section {
+                    margin-bottom: 2rem;
+                    text-align: justify;
+                }
+
+                .legal-html-preview .bullet-list {
+                    list-style-type: disc;
+                }
+
+                .legal-html-preview .definition-list {
+                    list-style-type: none;
+                    padding-left: 0;
+                }
+
+                .legal-html-preview .definition-list li {
+                    margin-bottom: 0.8rem;
+                    padding-left: 1rem;
+                    text-indent: -1rem;
+                }
+
+                .legal-html-preview .definition-list li:before {
+                    content: "•";
+                    color: #3498db;
+                    font-weight: bold;
+                    margin-right: 0.5rem;
+                }
+
+                .legal-html-preview .disclaimer-box,
+                .legal-html-preview .note-section {
+                    background-color: #fff3cd;
+                    border: 1px solid #ffeaa7;
+                    border-left: 4px solid #fdcb6e;
+                    padding: 1.5rem;
+                    margin: 2rem 0;
+                    border-radius: 4px;
+                    color: #333;
+                }
+
+                .legal-html-preview .disclaimer-box strong,
+                .legal-html-preview .note-section strong {
+                    color: #d35400;
+                }
+
+                .legal-html-preview .section-divider {
+                    height: 1px;
+                    background: linear-gradient(to right, transparent, #eaeaea, transparent);
+                    margin: 2rem 0;
+                }
+
+                .legal-html-preview .highlight-text {
+                    background-color: #f8f9fa;
+                    border-left: 4px solid #3498db;
+                    padding: 1rem 1.5rem;
+                    margin: 1.5rem 0;
+                    font-weight: 500;
+                    color: #2c3e50;
+                    border-radius: 4px;
+                }
             `}</style>
         </div>
     );

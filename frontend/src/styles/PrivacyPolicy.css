@@ -283,6 +283,8 @@
 
 .dynamic-content {
   animation: fadeIn 0.5s ease-out;
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
 
 @keyframes fadeIn {
