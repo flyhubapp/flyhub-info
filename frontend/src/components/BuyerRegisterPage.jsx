@@ -395,8 +395,10 @@ Registration Date: ${new Date().toLocaleString()}
                 aria-describedby="terms-description"
               />
               <label htmlFor="terms">
-                I agree to the <a href="/terms" target="_blank" rel="noopener noreferrer">Terms of Service</a> and{' '}
-                <a href="/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+                I agree to the <a href="/terms" target="_blank" rel="noopener noreferrer">Terms of Service</a>,{' '}
+                <a href="/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>,{' '}
+                <a href="/shipping" target="_blank" rel="noopener noreferrer">Shipping Policy</a> and{' '}
+                <a href="/refund" target="_blank" rel="noopener noreferrer">Refund Policy</a>
                 <span id="terms-description" style={{display: 'none'}}>
                   Required to create your account
                 </span>

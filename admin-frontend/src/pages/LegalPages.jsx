@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Shield, FileText, Save, History, CheckCircle, AlertCircle, Loader2, Eye, Edit3 } from 'lucide-react';
 
 const LegalPages = () => {
-    const [activeTab, setActiveTab] = useState('terms'); // 'terms' | 'privacy'
+    const [activeTab, setActiveTab] = useState('terms'); // 'terms' | 'privacy' | 'shipping' | 'refund'
     const [content, setContent] = useState('');
     const [loading, setLoading] = useState(false);
     const [saving, setSaving] = useState(false);
@@ -154,6 +154,52 @@ const LegalPages = () => {
                             <Shield size={16} />
                             Privacy Policy
                         </button>
+                        <button 
+                            onClick={() => setActiveTab('shipping')}
+                            className={`tab-link ${activeTab === 'shipping' ? 'active' : ''}`}
+                            style={{
+                                padding: '12px 24px',
+                                border: 'none',
+                                background: 'none',
+                                color: activeTab === 'shipping' ? 'var(--pink)' : 'var(--text-secondary)',
+                                cursor: 'pointer',
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '8px',
+                                fontWeight: activeTab === 'shipping' ? 700 : 500,
+                                borderBottom: activeTab === 'shipping' ? '3px solid var(--pink)' : '3px solid transparent',
+                                transition: 'all 0.2s',
+                                fontSize: '13px',
+                                textTransform: 'uppercase',
+                                letterSpacing: '0.5px'
+                            }}
+                        >
+                            <FileText size={16} />
+                            Shipping Policy
+                        </button>
+                        <button 
+                            onClick={() => setActiveTab('refund')}
+                            className={`tab-link ${activeTab === 'refund' ? 'active' : ''}`}
+                            style={{
+                                padding: '12px 24px',
+                                border: 'none',
+                                background: 'none',
+                                color: activeTab === 'refund' ? 'var(--pink)' : 'var(--text-secondary)',
+                                cursor: 'pointer',
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '8px',
+                                fontWeight: activeTab === 'refund' ? 700 : 500,
+                                borderBottom: activeTab === 'refund' ? '3px solid var(--pink)' : '3px solid transparent',
+                                transition: 'all 0.2s',
+                                fontSize: '13px',
+                                textTransform: 'uppercase',
+                                letterSpacing: '0.5px'
+                            }}
+                        >
+                            <Shield size={16} />
+                            Refund Policy
+                        </button>
                     </div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--text-muted)', fontSize: '11px', fontWeight: 600 }}>
                         <History size={14} />
@@ -170,7 +216,7 @@ const LegalPages = () => {
                         <textarea
                             value={content}
                             onChange={(e) => setContent(e.target.value)}
-                            placeholder={`Enter ${activeTab === 'terms' ? 'Terms & Conditions' : 'Privacy Policy'} content here...`}
+                            placeholder={`Enter ${activeTab === 'terms' ? 'Terms & Conditions' : activeTab === 'privacy' ? 'Privacy Policy' : activeTab === 'shipping' ? 'Shipping Policy' : 'Refund Policy'} content here...`}
                             style={{
                                 width: '100%',
                                 flex: 1,

@@ -13,6 +13,8 @@ import BuyerRegisterPage from './components/BuyerRegisterPage';
 import SellerRegisterPage from './components/SellerRegisterPage';
 import Termsandcondition from './components/Termsandcondition';
 import PrivacyPolicy from './components/PrivacyPolicy';
+import ShippingPolicy from './components/ShippingPolicy';
+import RefundPolicy from './components/RefundPolicy';
 import About from './components/About';
 
 
@@ -49,6 +51,8 @@ function App() {
           <Route path="/register/seller" element={<SellerRegisterPage />} />
           <Route path="/terms" element={<Termsandcondition />} />
           <Route path="/privacy" element={<PrivacyPolicy />} />
+          <Route path="/shipping" element={<ShippingPolicy />} />
+          <Route path="/refund" element={<RefundPolicy />} />
           <Route path="/about-us" element={<About />} />
         </Routes>
         <Footer /> {/* Add Footer here */}

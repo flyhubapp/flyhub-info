@@ -4,7 +4,7 @@ const legalSchema = new mongoose.Schema({
   type: {
     type: String,
     required: true,
-    unique: true, // 'terms', 'privacy'
+    unique: true, // 'terms', 'privacy', 'shipping', 'refund'
   },
   content: {
     type: String,

@@ -159,6 +159,10 @@ const Footer = () => {
                     <Link to="/terms">Terms & Conditions</Link>
                     <span className="separator">|</span>
                     <Link to="/privacy">Privacy Policy</Link>
+                    <span className="separator">|</span>
+                    <Link to="/shipping">Shipping Policy</Link>
+                    <span className="separator">|</span>
+                    <Link to="/refund">Refund Policy</Link>
                   </li>
                 </ul>
               </div>
