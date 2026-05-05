@@ -58,6 +58,25 @@ class EmailService {
 
     return this.sendEmail(mailOptions);
   }
+
+  /**
+   * Send Confirmation Email to User
+   * @param {string} to - Recipient email
+   * @param {string} name - Recipient name
+   * @param {string} type - Submission type
+   * @param {Object} details - Additional details
+   */
+  async sendConfirmationEmail(to, name, type, details = {}) {
+    const { getConfirmationTemplate } = require('../templates/confirmationTemplate');
+    
+    const mailOptions = {
+      to,
+      subject: `Flyhub: ${type.charAt(0).toUpperCase() + type.slice(1)} Received`,
+      html: getConfirmationTemplate(name, type, details)
+    };
+
+    return this.sendEmail(mailOptions);
+  }
 }
 
 module.exports = new EmailService();

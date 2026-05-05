@@ -174,6 +174,7 @@ app.post('/api/contact', async (req, res) => {
       await notif.save();
       
       sendSubmissionAlert('Contact Inquiry', req.body);
+      emailService.sendConfirmationEmail(req.body.email, req.body.name, 'contact');
       return res.status(201).json({ success: true, data: entry });
     }
     const fakeEntry = { ...req.body, _id: Date.now().toString(), createdAt: new Date(), status: 'New' };
@@ -203,6 +204,7 @@ app.post('/api/franchise', async (req, res) => {
       await notif.save();
       
       sendSubmissionAlert('Franchise Application', req.body);
+      emailService.sendConfirmationEmail(req.body.email, `${req.body.firstName} ${req.body.lastName}`, 'franchise');
       return res.status(201).json({ success: true, data: entry });
     }
     const fakeEntry = { ...req.body, _id: Date.now().toString(), createdAt: new Date(), status: 'New' };
@@ -232,6 +234,7 @@ app.post('/api/app-access', async (req, res) => {
       await notif.save();
       
       sendSubmissionAlert('App Access Request', req.body);
+      emailService.sendConfirmationEmail(req.body.email, req.body.name, 'appAccess');
       return res.status(201).json({ success: true, data: entry });
     }
     const fakeEntry = { ...req.body, _id: Date.now().toString(), createdAt: new Date(), status: 'New' };
@@ -261,6 +264,7 @@ app.post('/api/registration', async (req, res) => {
       await notif.save();
       
       sendSubmissionAlert(`${req.body.role} Registration`, req.body);
+      emailService.sendConfirmationEmail(req.body.email, req.body.fullName, 'registration', { role: req.body.role });
       return res.status(201).json({ success: true, data: entry });
     }
     const fakeEntry = { ...req.body, _id: Date.now().toString(), createdAt: new Date(), status: 'New' };
