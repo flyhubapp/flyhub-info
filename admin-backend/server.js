@@ -7,6 +7,8 @@ const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
 require('dotenv').config({ override: true });
+const emailService = require('./src/services/emailService');
+const emailRoutes = require('./src/routes/emailRoutes');
 
 // Ensure uploads directory exists
 // NOTE: Cloud Run filesystems are ephemeral. Static files in 'uploads' will be lost on restart.
@@ -80,24 +82,16 @@ app.use(express.json({ limit: '100mb' }));
 app.use(express.urlencoded({ limit: '100mb', extended: true }));
 app.use('/uploads', express.static('uploads'));
 
+// Use the new email service routes
+app.use('/api/mail', emailRoutes);
+
 // ── MAIL CONFIGURATION ──
-const transporter = nodemailer.createTransport({
-  service: process.env.EMAIL_SERVICE || 'gmail',
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS
-  }
-});
+// Now handled by src/services/emailService.js
 
-// Helper for sending alerts
+
+// Helper for sending alerts using the new Email Service
 const sendSubmissionAlert = async (type, details) => {
-  if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
-    console.warn(`📩 [MAIL SKIP] Set EMAIL_USER/PASS in .env to send alerts for: ${type}`);
-    return;
-  }
-
   const mailOptions = {
-    from: `"Flyhub Mission Control" <${process.env.EMAIL_USER}>`,
     to: process.env.NOTIFY_EMAIL || 'flyhubapp@gmail.com',
     subject: `🚀 New ${type} Submission - ${details.name || details.fullName || 'Flyhub User'}`,
     html: `
@@ -115,10 +109,9 @@ const sendSubmissionAlert = async (type, details) => {
   };
 
   try {
-    const info = await transporter.sendMail(mailOptions);
-    console.log(`✅ Mail alert sent for ${type}: ${info.messageId}`);
+    await emailService.sendEmail(mailOptions);
   } catch (err) {
-    console.error(`❌ Mail error for ${type}: ${err.message}`);
+    console.error(`❌ Mail alert error for ${type}: ${err.message}`);
   }
 };
 
