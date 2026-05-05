@@ -42,24 +42,6 @@ class EmailService {
   }
 
   /**
-   * Send OTP Email
-   * @param {string} to - Recipient email
-   * @param {string} otp - OTP code
-   * @param {string} name - Recipient name
-   */
-  async sendOTPEmail(to, otp, name) {
-    const { getOTPTemplate } = require('../templates/otpTemplate');
-    
-    const mailOptions = {
-      to,
-      subject: 'Flyhub Verification Code',
-      html: getOTPTemplate(otp, name)
-    };
-
-    return this.sendEmail(mailOptions);
-  }
-
-  /**
    * Send Confirmation Email to User
    * @param {string} to - Recipient email
    * @param {string} name - Recipient name

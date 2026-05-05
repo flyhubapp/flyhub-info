@@ -32,35 +32,6 @@ const sendEmail = async (req, res) => {
   }
 };
 
-const sendOTP = async (req, res) => {
-  try {
-    const { to, otp, name } = req.body;
-
-    if (!to || !otp) {
-      return res.status(400).json({ 
-        success: false, 
-        message: 'Recipient email and OTP are required.' 
-      });
-    }
-
-    const info = await emailService.sendOTPEmail(to, otp, name);
-
-    res.status(200).json({
-      success: true,
-      message: 'OTP Email sent successfully',
-      messageId: info.messageId
-    });
-  } catch (error) {
-    logger.error(`Controller Error [sendOTP]: ${error.message}`);
-    res.status(500).json({
-      success: false,
-      message: 'Internal server error while sending OTP.',
-      error: process.env.NODE_ENV === 'development' ? error.message : undefined
-    });
-  }
-};
-
 module.exports = {
-  sendEmail,
-  sendOTP
+  sendEmail
 };

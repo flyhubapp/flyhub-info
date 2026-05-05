@@ -9,11 +9,4 @@ const emailController = require('../controllers/emailController');
  */
 router.post('/send-email', emailController.sendEmail);
 
-/**
- * @route   POST /api/mail/send-otp
- * @desc    Send an OTP email
- * @access  Public (Should be protected by API key/Auth middleware in production)
- */
-router.post('/send-otp', emailController.sendOTP);
-
 module.exports = router;
