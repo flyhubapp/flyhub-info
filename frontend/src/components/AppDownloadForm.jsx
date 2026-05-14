@@ -109,24 +109,57 @@ const AppDownloadForm = ({ isOpen, onClose }) => {
                                 <div style={{ fontSize: '18px', fontWeight: '600', color: 'white' }}>Flyhub Mobile v{latestVersion.version}</div>
                                 <div style={{ fontSize: '13px', color: 'rgba(255,255,255,0.4)', marginTop: '4px' }}>Android APK Archive</div>
                                 
+                                <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', marginTop: '20px', flexWrap: 'wrap' }}>
+                                    <a 
+                                        href={latestVersion.apkUrl} 
+                                        download 
+                                        className="submit-btn" 
+                                        style={{ 
+                                            display: 'inline-block', 
+                                            textDecoration: 'none',
+                                            width: 'auto',
+                                            padding: '12px 24px'
+                                        }}
+                                    >
+                                        Download APK
+                                    </a>
+                                    <a 
+                                        href="https://play.google.com/store/apps/details?id=aviatricks.flyhub&pcampaignid=web_share" 
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="submit-btn" 
+                                        style={{ 
+                                            display: 'inline-block', 
+                                            textDecoration: 'none',
+                                            width: 'auto',
+                                            padding: '12px 24px',
+                                            background: '#4285f4'
+                                        }}
+                                    >
+                                        Get on Play Store
+                                    </a>
+                                </div>
+                            </div>
+                        ) : (
+                            <div className="apk-card" style={{ background: 'rgba(255,255,255,0.05)', padding: '20px', borderRadius: '12px', marginBottom: '24px' }}>
+                                <p style={{ color: 'rgba(255,255,255,0.7)', marginBottom: '16px' }}>
+                                    Direct APK download is currently unavailable, but you can get it from the Play Store:
+                                </p>
                                 <a 
-                                    href={latestVersion.apkUrl} 
-                                    download 
+                                    href="https://play.google.com/store/apps/details?id=aviatricks.flyhub&pcampaignid=web_share" 
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     className="submit-btn" 
                                     style={{ 
                                         display: 'inline-block', 
-                                        marginTop: '20px', 
                                         textDecoration: 'none',
                                         width: 'auto',
-                                        padding: '12px 32px'
+                                        padding: '12px 32px',
+                                        background: '#4285f4'
                                     }}
                                 >
-                                    Download APK Now
+                                    Get it on Google Play
                                 </a>
-                            </div>
-                        ) : (
-                            <div style={{ color: '#ef4444', marginBottom: '24px' }}>
-                                The APK is temporarily unavailable. Our team will contact you.
                             </div>
                         )}
                         

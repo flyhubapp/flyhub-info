@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaCheckCircle, FaMobileAlt, FaShieldAlt, FaUsers, FaGooglePlay, FaArrowRight, FaStar, FaRocket, FaClock, FaHandshake, FaTruck, FaUndoAlt } from 'react-icons/fa';
+import { FaCheckCircle, FaMobileAlt, FaShieldAlt, FaUsers, FaArrowRight, FaStar, FaRocket, FaClock, FaHandshake, FaTruck, FaUndoAlt } from 'react-icons/fa';
 import useScrollReveal from '../hooks/useScrollReveal';
 import useCountUp from '../hooks/useCountUp';
 import '../styles/Appinfo.css';
@@ -106,21 +106,19 @@ const AppInfo = () => {
             
             {/* Download section directly below phone */}
             <div className="download-section bottom-position">
-              {/* <h3>Download Now</h3>
-              <p>Get the Flyhub app and take your drone experience to the next level</p> */}
-              {/* <a 
-                href="https://play.google.com/store/apps" 
+              <a 
+                href="https://play.google.com/store/apps/details?id=aviatricks.flyhub&pcampaignid=web_share" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="download-btn"
-              > */}
-                {/* <FaGooglePlay className="play-icon" />
+              >
+                <img src="/images/playstore.png" alt="Play Store" className="play-icon-img" style={{ width: '24px', height: '24px', objectFit: 'contain', marginRight: '10px' }} />
                 <div className="btn-text">
                   <span>Get it on</span>
                   <span className="store-name">Google Play</span>
                 </div>
                 <FaArrowRight className="btn-arrow" />
-              </a> */}
+              </a>
             </div>
           </div>
           

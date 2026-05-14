@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { FaBars, FaTimes, FaDownload } from 'react-icons/fa';
-import AppDownloadForm from './AppDownloadForm';
+
 import '../styles/Navbar.css';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [isFormOpen, setIsFormOpen] = useState(false);
+
   const location = useLocation();
 
   useEffect(() => {
@@ -84,16 +84,15 @@ const Navbar = () => {
             </div>
 
             <div className="nav-actions">
-              <button
+              <a 
+                href="https://play.google.com/store/apps/details?id=aviatricks.flyhub&pcampaignid=web_share" 
+                target="_blank" 
+                rel="noopener noreferrer"
                 className="play-store-btn"
-                onClick={() => {
-                  closeMenu();
-                  setIsFormOpen(true);
-                }}
               >
-                <FaDownload className="play-icon" />
-                <span>Get the App</span>
-              </button>
+                <img src="/images/playstore.png" alt="Play Store" className="play-icon-img" />
+                <span>Play Store</span>
+              </a>
             </div>
           </div>
 
@@ -103,12 +102,6 @@ const Navbar = () => {
           )}
         </div>
       </nav>
-
-      {/* Lead Capture Modal moved outside the nav container */}
-      <AppDownloadForm
-        isOpen={isFormOpen}
-        onClose={() => setIsFormOpen(false)}
-      />
     </>
   );
 };

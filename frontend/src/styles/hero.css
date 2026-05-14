@@ -116,6 +116,14 @@
 
 .hero__app-button-icon {
   margin-right: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.hero__play-icon-img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
 }
 
 .hero__app-button-content {

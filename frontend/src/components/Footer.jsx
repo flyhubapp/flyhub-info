@@ -189,7 +189,23 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Empty section removed since we're combining */}
+          <div className="footer-section">
+            <h4>Get Our App</h4>
+            <a 
+              href="https://play.google.com/store/apps/details?id=aviatricks.flyhub&pcampaignid=web_share" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="google-play-link"
+            >
+              <div className="google-play-badge">
+                <img src="/images/playstore.png" alt="Play Store" className="google-play-icon" style={{ width: '24px', height: '24px', objectFit: 'contain', marginRight: '10px' }} />
+                <div className="google-play-text">
+                  <span className="google-play-small">GET IT ON</span>
+                  <span className="google-play-large">Google Play</span>
+                </div>
+              </div>
+            </a>
+          </div>
         </div>
 
         <div className="footer-bottom">

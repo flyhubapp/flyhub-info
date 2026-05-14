@@ -13,6 +13,22 @@ const Hero = () => {
           <p className="hero__subtitle">
             Streamlined marketplace connecting drone buyers, sellers, and service providers
           </p>
+          <div className="hero__app-buttons">
+            <a 
+              href="https://play.google.com/store/apps/details?id=aviatricks.flyhub&pcampaignid=web_share" 
+              className="hero__app-button hero__app-button--google"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <div className="hero__app-button-icon">
+                <img src="/images/playstore.png" alt="Play Store" className="hero__play-icon-img" />
+              </div>
+              <div className="hero__app-button-content">
+                <span className="hero__app-button-text">GET IT ON</span>
+                <span className="hero__app-button-title">Google Play</span>
+              </div>
+            </a>
+          </div>
           {/* Buy, Sell, or Rent Drones Feature */}
           <div className="hero__feature-highlight">
             <div className="hero__feature-text">
